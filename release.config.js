@@ -7,6 +7,10 @@ export default {
       "@semantic-release/commit-analyzer",
       {
         preset: "conventionalcommits",
+        releaseRules: [
+          { type: "build", release: "patch" },
+          { type: "chore", release: "patch" },
+        ],
       },
     ],
     [
@@ -43,4 +47,3 @@ export default {
     ],
   ],
 };
-
