@@ -1,15 +1,20 @@
 # ts-schnorrq
 
-To install dependencies:
+Standalone SchnorrQ (FourQ) + K12 library for Qubic.
+
+Status: scaffolding only (Phase A). Crypto primitives are not implemented yet.
+
+## Development
 
 ```bash
 bun install
+bun test
+bun run build
 ```
 
-To run:
+## API (planned)
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.3.5. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+- `k12(input, dkLen)`
+- `verify(publicKey32, messageDigest32, signature64)`
+- `generatePublicKey(secretKey32)`
+- `createSchnorrq({ signer })` for pluggable signing backends

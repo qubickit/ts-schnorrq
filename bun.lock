@@ -6,6 +6,7 @@
       "name": "ts-schnorrq",
       "devDependencies": {
         "@types/bun": "latest",
+        "typescript": "^5.0.0",
       },
       "peerDependencies": {
         "typescript": "^5",
