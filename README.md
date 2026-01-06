@@ -4,6 +4,26 @@ Standalone SchnorrQ (FourQ) + K12 library for Qubic.
 
 Status: implemented (pure TypeScript). `unsafeSign`/`sign` is not side-channel hardened.
 
+## When to use this
+
+- You need a pure-TS SchnorrQ implementation for Qubic-compatible keygen, signing, and verification.
+- You’re targeting browsers, Bun, or Node and want a single, portable crypto backend.
+- You need deterministic compatibility with the existing Qubic SchnorrQ behavior.
+
+## When not to use this
+
+- You need side-channel hardened signing in hostile or multi-tenant environments.
+- You need high-throughput signing; use a native/WASM backend instead.
+
+## Where to use this
+
+- **Good fit:** local tools, CLIs, offline signing, server-side verification, browser verification.
+- **Use with caution:** browser or shared servers for signing; prefer external signer backends.
+
+## Why this exists
+
+Qubic tooling historically relied on a WASM shim for SchnorrQ. This library replaces that dependency with a portable, readable TypeScript implementation while keeping behavior compatible.
+
 ## Install
 
 ```bash
