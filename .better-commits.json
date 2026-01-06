@@ -80,25 +80,53 @@
     },
     "commit_scope": {
         "enable": true,
-        "custom_scope": false,
+        "custom_scope": true,
         "max_items": 20,
-        "initial_value": "app",
+        "initial_value": "lib",
         "options": [
             {
-                "value": "app",
-                "label": "app"
+                "value": "lib",
+                "label": "lib"
             },
             {
-                "value": "shared",
-                "label": "shared"
+                "value": "fourq",
+                "label": "fourq"
             },
             {
-                "value": "server",
-                "label": "server"
+                "value": "schnorrq",
+                "label": "schnorrq"
             },
             {
-                "value": "tools",
-                "label": "tools"
+                "value": "k12",
+                "label": "k12"
+            },
+            {
+                "value": "order",
+                "label": "order"
+            },
+            {
+                "value": "crypto",
+                "label": "crypto"
+            },
+            {
+                "value": "tests",
+                "label": "tests"
+            },
+            {
+                "value": "docs",
+                "label": "docs"
+            },
+            {
+                "value": "ci",
+                "label": "ci"
+            },
+            {
+                "value": "tooling",
+                "label": "tooling"
+            },
+            {
+                "value": "release",
+                "label": "release"
             },
             {
                 "value": "",
