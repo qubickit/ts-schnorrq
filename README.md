@@ -2,7 +2,7 @@
 
 Standalone SchnorrQ (FourQ) + K12 library for Qubic.
 
-Status: scaffolding only (Phase A). Crypto primitives are not implemented yet.
+Status: implemented (pure TS). `unsafeSign`/`sign` is not side-channel hardened.
 
 ## Development
 
@@ -18,3 +18,5 @@ bun run build
 - `verify(publicKey32, messageDigest32, signature64)`
 - `generatePublicKey(secretKey32)`
 - `createSchnorrq({ signer })` for pluggable signing backends
+- `unsafeSign(subSeed32, publicKey32, messageDigest32)` (not hardened)
+- `sign(...)` alias for `unsafeSign(...)` (not hardened)

@@ -1,6 +1,4 @@
 import { describe, expect, it } from "bun:test";
-import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { k12 } from "../src/index.js";
 
 function hexToBytes(hex: string): Uint8Array {
@@ -32,7 +30,7 @@ function assertHexLength(hex: string, bytes: number, name: string) {
   expect(() => hexToBytes(hex)).not.toThrow();
 }
 
-describe("WASM golden fixture", () => {
+describe("golden vectors", () => {
   it("has expected shapes and lengths", () => {
     expect(GOLDEN.seed.length).toBe(55);
     assertHexLength(GOLDEN.secretKey32Hex, 32, "secretKey32Hex");
@@ -46,33 +44,5 @@ describe("WASM golden fixture", () => {
     expect(k12(k12Input, 32)).toEqual(hexToBytes(GOLDEN.k12Out32Hex));
   });
 
-  const wasmPath = new URL("../temp/wasm/index.js", import.meta.url);
-  const hasLocalWasm = existsSync(fileURLToPath(wasmPath));
-
-  (hasLocalWasm ? it : it.skip)("matches local WASM backend (optional)", async () => {
-    const wasmCryptoPromise = (await import(wasmPath.href)).default as Promise<{
-      schnorrq: {
-        generatePublicKey(secretKey: Uint8Array): Uint8Array;
-        sign(secretKey: Uint8Array, publicKey: Uint8Array, messageDigest32: Uint8Array): Uint8Array;
-        verify(publicKey: Uint8Array, messageDigest32: Uint8Array, signature64: Uint8Array): number;
-      };
-      K12(input: Uint8Array, output: Uint8Array, outputLength: number, outputOffset?: number): void;
-    }>;
-
-    const wasmCrypto = await wasmCryptoPromise;
-    const secretKey32 = hexToBytes(GOLDEN.secretKey32Hex);
-    const publicKey32 = hexToBytes(GOLDEN.publicKey32Hex);
-    const digest32 = hexToBytes(GOLDEN.digest32Hex);
-
-    expect(wasmCrypto.schnorrq.generatePublicKey(secretKey32)).toEqual(publicKey32);
-
-    const sig = wasmCrypto.schnorrq.sign(secretKey32, publicKey32, digest32);
-    expect(sig).toEqual(hexToBytes(GOLDEN.signature64Hex));
-    expect(wasmCrypto.schnorrq.verify(publicKey32, digest32, sig)).toBe(1);
-
-    const k12Input = hexToBytes(GOLDEN.k12InputHex);
-    const out = new Uint8Array(32);
-    wasmCrypto.K12(k12Input, out, 32);
-    expect(out).toEqual(hexToBytes(GOLDEN.k12Out32Hex));
-  });
+  // This file intentionally does not depend on a local WASM oracle.
 });
