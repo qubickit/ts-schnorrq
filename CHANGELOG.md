@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/qubickit/ts-schnorrq/compare/v1.0.0...v1.0.1) (2026-01-06)
+
+### Bug Fixes
+
+* **tools:** set repository for provenance ([a4a35e2](https://github.com/qubickit/ts-schnorrq/commit/a4a35e255a147f73765600061f0169aa606067ba))
+
 ## 1.0.0 (2026-01-06)
 
 ### Features
