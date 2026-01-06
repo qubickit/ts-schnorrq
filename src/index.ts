@@ -1,6 +1,7 @@
 import { notImplemented } from "./internal/not-implemented.js";
 export { k12 } from "./k12.js";
 export { generatePublicKey } from "./fourq/public-key.js";
+export { verify } from "./schnorrq/verify.js";
 
 export type SchnorrqSigner = Readonly<{
   sign(subSeed32: Uint8Array, publicKey32: Uint8Array, messageDigest32: Uint8Array): Uint8Array;
@@ -22,10 +23,4 @@ export function createSchnorrq(params: CreateSchnorrqParams): Schnorrq {
   };
 }
 
-export function verify(
-  _publicKey32: Uint8Array,
-  _messageDigest32: Uint8Array,
-  _signature64: Uint8Array,
-): 0 | 1 {
-  return notImplemented("verify()");
-}
+// verify exported from ./schnorrq/verify.js
