@@ -2,6 +2,7 @@ import { notImplemented } from "./internal/not-implemented.js";
 export { k12 } from "./k12.js";
 export { generatePublicKey } from "./fourq/public-key.js";
 export { verify } from "./schnorrq/verify.js";
+export { unsafeSign } from "./schnorrq/sign.js";
 
 export type SchnorrqSigner = Readonly<{
   sign(subSeed32: Uint8Array, publicKey32: Uint8Array, messageDigest32: Uint8Array): Uint8Array;
