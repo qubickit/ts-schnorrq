@@ -3,6 +3,14 @@
   "version": "0.0.0",
   "module": "./dist/index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qubickit/ts-schnorrq"
+  },
+  "bugs": {
+    "url": "https://github.com/qubickit/ts-schnorrq/issues"
+  },
+  "homepage": "https://github.com/qubickit/ts-schnorrq#readme",
   "publishConfig": {
     "access": "public"
   },
