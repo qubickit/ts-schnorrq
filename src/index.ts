@@ -1,5 +1,6 @@
 import { notImplemented } from "./internal/not-implemented.js";
 export { k12 } from "./k12.js";
+export { generatePublicKey } from "./fourq/public-key.js";
 
 export type SchnorrqSigner = Readonly<{
   sign(subSeed32: Uint8Array, publicKey32: Uint8Array, messageDigest32: Uint8Array): Uint8Array;
@@ -27,8 +28,4 @@ export function verify(
   _signature64: Uint8Array,
 ): 0 | 1 {
   return notImplemented("verify()");
-}
-
-export function generatePublicKey(_secretKey32: Uint8Array): Uint8Array {
-  return notImplemented("generatePublicKey()");
 }
