@@ -17,8 +17,7 @@ describe("ts-schnorrq (Phase A)", () => {
 
   it("exports stubbed crypto functions", () => {
     expect(() => verify(new Uint8Array(32), new Uint8Array(32), new Uint8Array(64))).toThrow();
-    expect(() => k12(new Uint8Array(1), 32)).toThrow();
+    expect(k12(new Uint8Array(1), 32).byteLength).toBe(32);
     expect(() => generatePublicKey(new Uint8Array(32))).toThrow();
   });
 });
-

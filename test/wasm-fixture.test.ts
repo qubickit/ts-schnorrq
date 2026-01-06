@@ -1,6 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { k12 } from "../src/index.js";
 import { schnorrqWasmFixture } from "./__fixtures__/schnorrq-wasm.js";
 import { hexToBytes } from "./utils/hex.js";
 
@@ -21,6 +22,9 @@ describe("WASM golden fixture", () => {
     assertHexLength(schnorrqWasmFixture.signature64Hex, 64, "signature64Hex");
     expect(schnorrqWasmFixture.k12InputHex.length).toBeGreaterThan(0);
     assertHexLength(schnorrqWasmFixture.k12Out32Hex, 32, "k12Out32Hex");
+
+    const k12Input = hexToBytes(schnorrqWasmFixture.k12InputHex);
+    expect(k12(k12Input, 32)).toEqual(hexToBytes(schnorrqWasmFixture.k12Out32Hex));
   });
 
   const wasmPath = new URL("../temp/wasm/index.js", import.meta.url);

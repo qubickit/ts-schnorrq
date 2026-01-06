@@ -1,4 +1,5 @@
 import { notImplemented } from "./internal/not-implemented.js";
+export { k12 } from "./k12.js";
 
 export type SchnorrqSigner = Readonly<{
   sign(subSeed32: Uint8Array, publicKey32: Uint8Array, messageDigest32: Uint8Array): Uint8Array;
@@ -26,10 +27,6 @@ export function verify(
   _signature64: Uint8Array,
 ): 0 | 1 {
   return notImplemented("verify()");
-}
-
-export function k12(_input: Uint8Array, _dkLen: number): Uint8Array {
-  return notImplemented("k12()");
 }
 
 export function generatePublicKey(_secretKey32: Uint8Array): Uint8Array {
